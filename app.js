@@ -6,6 +6,7 @@ const onerror = require('koa-onerror')
 const bodyparser = require('koa-bodyparser')
 const logger = require('koa-logger')
 const response_format = require('./middlewares/response_format')
+const cors = require('./middlewares/cors')
 
 const index = require('./routes/index')
 const api = require('./routes/api')
@@ -35,6 +36,7 @@ app.use(views(__dirname + '/views', {
   extension: 'pug'
 }))
 
+app.use(cors)
 app.use(response_format('^/api'))
 
 // routes
